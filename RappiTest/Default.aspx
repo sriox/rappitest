@@ -10,8 +10,11 @@
 <head runat="server">
     <title>Title</title>
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="container">
 <form id="HtmlForm" runat="server">
     <div ng-controller="MainCtrl">
         <div class="row">
@@ -22,7 +25,41 @@
                 <input type="text" ng-model="testCases"  />
             </div>
         </div>
-        
+        <br />
+        <br />
+        <div ng-repeat="i in testCases | range">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="text-primary">
+                        Case {{$index + 1}}
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    N (size of the matrix)
+                </div>
+                <div class="col-md-1">
+                    <input type="text" ng-model="n"  />
+                </div>
+                <div class="col-md-2">
+                    M (number of operations)
+                </div>
+                <div class="col-md-1">
+                    <input type="text" ng-model="m"  />
+                </div>
+            </div>
+            <div class="row" ng-repeat="j in x.m | range">
+                <div class="col-md-3">
+                    Write the operation
+                </div>
+                <div class="col-md-4">
+                    <input type="text" ng-model="operations"  />
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
     </div>
     
 </form>
