@@ -1,0 +1,4 @@
+C:\Users\srios6\Google Drive\Work\Rappi\Test\RappiTest\RappiTest\bin\RappiTest.dll
+C:\Users\srios6\Google Drive\Work\Rappi\Test\RappiTest\RappiTest\bin\RappiTest.pdb
+C:\Users\srios6\Google Drive\Work\Rappi\Test\RappiTest\RappiTest\obj\Debug\RappiTest.dll
+C:\Users\srios6\Google Drive\Work\Rappi\Test\RappiTest\RappiTest\obj\Debug\RappiTest.pdb
