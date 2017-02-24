@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Solution">
+<head>
+    <title>Rappi Coding Test - Sergio Ríos Giraldo</title>
+    
+    <script src="Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="Scripts/underscore-min.js" type="text/javascript"></script>
+    <script src="Scripts/angular.min.js" type="text/javascript"></script>
+    <script src="App/controllers.js" type="text/javascript"></script>
+    <script src="App/solution.js" type="text/javascript"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="container">
+<div class="page-header">
+    <img src="https://www.rappi.com/assets/images/logo-rappi2.png" alt="Alternate Text"/>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Prueba realizada por:</strong>
+        </div>
+        <div class="col-md-2">
+            Sergio Ríos Giraldo
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <strong>E-mail:</strong>
+        </div>
+        <div class="col-md-2">
+            <a href="mailto: sergioriosg@gmail.com">sergioriosg@gmail.com</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Cel:</strong>
+        </div>
+        <div class="col-md-2">
+            3223509890
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <strong>LinkedIn:</strong>
+        </div>
+        <div class="col-md-2">
+            <a href="https://co.linkedin.com/in/sergioriosg" target="_blank">https://co.linkedin.com/in/sergioriosg</a>
+        </div>
+    </div>
+    <br/>
+    <br/>
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+</div>
+
+<ul  class="nav nav-tabs">
+    <li class="active">
+        <a href="#part1" data-toggle="tab">Test</a>
+    </li>
+			<li><a href="#part2" data-toggle="tab">Explicación</a>
+			</li>			
+		</ul>
+
+<div class="tab-content ">
+    <div class="tab-pane active" id="part1">
+        <br/>
+        <br/>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h3>
+                        Instrucciones
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <ol>
+                        <li>Mover la barra hasta configurar el número de casos deseado (2 para la prueba)</li>
+                        <li>Ingresar el tamaño de de la matriz y el número de operaciones para cada caso (Caso 1: N = 4, M = 5 - Caso 2: N = 2, M = 4)</li>
+                        <li>Ingresar las siguientes operaciones para el primer caso: 
+                            <br />
+                            UPDATE 2 2 2 4 <br/>
+                            QUERY 1 1 1 3 3 3 <br/>
+                            UPDATE 1 1 1 23 <br/>
+                            QUERY 2 2 2 4 4 4 <br/>
+                            QUERY 1 1 1 3 3 3 <br/>
+                        </li>
+                        <li>Ingresar las siguientes operaciones para el segundo caso: 
+                            <br />
+                            UPDATE 2 2 2 1 <br/>
+                            QUERY 1 1 1 1 1 1 <br/>
+                            QUERY 1 1 1 2 2 2 <br/>
+                            QUERY 2 2 2 2 2 2 <br/>
+                        </li>
+                        <li>Validar los resultados para cada caso: 
+                            <br />
+                            4  <br/>
+                            4  <br/>
+                            27 <br/>
+                            0  <br/>
+                            1  <br/>
+                            1  <br/>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+        <form id="HtmlForm" runat="server">
+            <div ng-controller="MainCtrl">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        Move the bar until the desire number of cases
+
+                    </div>
+                    <div class="col-md-2">
+                        <input type="range" min="1" max="50" step="1" ng-model="testCases"/>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="badge badge-info">{{testCases}}</span>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div ng-repeat="c in cases">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="text-primary">
+                                Case {{$index + 1}}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            N (size of the matrix)
+                        </div>
+                        <div class="col-md-1">
+                            <input type="text" ng-model="n" class="col-md-12" ng-change="setUpMatrix($index, n)"/>
+                        </div>
+                        <div class="col-md-2">
+                            M (number of operations)
+                        </div>
+                        <div class="col-md-1">
+                            <input type="text" ng-model="m" class="col-md-12" ng-change="setUpOperations($index, m)"/>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="o in $parent.cases[$index].operations">
+                        <br/>
+                        <div class="col-md-2 col-md-offset-1">
+                            Write the operation {{$index + 1}}
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" ng-model="operation" class="col-md-12 text-uppercase" ng-blur="setUpOperation($parent.$index, $index, operation)"/>
+                        </div>
+                        <div class="col-md-3">
+                            {{ o.result }}
+                        </div>
+                    </div>
+
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="tab-pane active" id="part2">
+        <br />
+        <br/>
+        <div>
+            <h3>
+                Parte 1
+            </h3>
+            <ul>
+                <li>Para el desarrollo de la prueba se utilizaron los lenguajes HTML y javascript</li>
+                <li>Se utilizó el framework <a href="https://angularjs.org/" target="_blank">angularjs</a> para estructurar el código </li>
+                <li>Se construyó una capa de presentación (HTML) y una capa de lógica (Javascript) para estructurar el código</li>
+                <li>No se usaron capas de servicios ni persistencia porque la prueba no lo requería</li>
+                <li>El código de la lógica contiene atributos y métodos (funciones) que representan los objetos y su interacción</li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                Parte 2
+            </h3>
+        </div>
+        <div>
+            <h3>
+                Parte 3
+            </h3>
+            <ol>
+                <li>Principio de responsabilidad única: Consiste en que una clase solo debe realizar una única cosa, sin mezclar operaciones de diferentes clases u objetos de negocio y esto tiene como finalidad promover la reutilización, bajo acoplamiento y la mantenibilidad</li>
+                <li>Buen código: un buen código debe estar caracterizado por bajo acoplamiento y alta cohesión lo que nos permite reutilizar componentes y evitar que todo el sistema se afecte al momento de modificar uno de estos componentes al estar bajamente acoplado</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
