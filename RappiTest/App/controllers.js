@@ -55,15 +55,47 @@
             //Set up operation to execute
             $scope.setUpOperation = function (i, j, o) {
 
-                var resp = $scope.matrixCalc($scope.cases[i].matrix, o);
+                var resp = $scope.matrixCalc($scope.cases[i].matrix, o, parseInt($scope.cases[i].n));
                 $scope.cases[i].matrix = resp.matrix;
 
                 $scope.cases[i].operations[j].text = o;
                 $scope.cases[i].operations[j].result = resp.result;
             }
 
+            //Parameter range validation
+            $scope.validateCords = function(n, x1, y1, z1, x2, y2, z2) {
+
+                //Positive range validation
+                if (x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 || z1 < 0 || z2 < 0) throw "Negative values are not allowed";
+
+                //Order validation
+                var x = x1 > x2 || x1 > n || x2 > n;
+                var y = y1 > y2 || y1 > n || y2 > n;
+                var z = z1 > z2 || z1 > n || z2 > n;
+
+                if (x || y || z) throw "Invalid coordinates";
+            }
+
+            //Query numeric operation
+            $scope.calculate = function (matrix, x1, y1, z1, x2, y2, z2, n) {
+
+                $scope.validateCords(n, x1, y1, z1, x2, y2, z2);
+
+                var sum = 0;
+                _.each(matrix, function (cord) {
+                    if (cord.x >= x1 && cord.x <= x2) {
+                        if (cord.y >= y1 && cord.y <= y2) {
+                            if (cord.z >= z1 && cord.z <= z2) {
+                                sum = sum + cord.v;
+                            }
+                        }
+                    }
+                });
+                return sum;
+            }
+
             //Process operations and get results
-            $scope.matrixCalc = function (matrix, operation) {
+            $scope.matrixCalc = function (matrix, operation, n) {
                 if (operation.length === 0) return;
                 var result = {matrix: matrix, result: ""};
                 var parts = operation.split(" ");
@@ -96,19 +128,7 @@
                             var y2 = parts[5]-1;
                             var z2 = parts[6]-1;
 
-                            var sum = 0;
-
-                            _.each(matrix, function(cord) {
-                                if (cord.x >= x1 && cord.x <= x2) {
-                                    if (cord.y >= y1 && cord.y <= y2) {
-                                        if (cord.z >= z1 && cord.z <= z2) {
-                                            sum = sum + cord.v;
-                                        }
-                                    }
-                                }
-                            });
-
-                            result.result = sum;
+                            result.result = $scope.calculate(matrix, x1, y1, z1, x2, y2, z2, n);
                         }
                     } else {
                         throw "The action is not recognized";

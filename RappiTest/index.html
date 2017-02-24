@@ -59,6 +59,14 @@
             <a href="https://co.linkedin.com/in/sergioriosg" target="_blank">https://co.linkedin.com/in/sergioriosg</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Github:</strong>
+        </div>
+        <div class="col-md-2">
+            <a href="https://github.com/sriox/rappitest" target="_blank">https://github.com/sriox/rappitest</a>
+        </div>
+    </div>
     <br/>
     <br/>
 </div>
@@ -80,7 +88,7 @@
     <div class="tab-pane active" id="part1">
         <br/>
         <br/>
-        <div class="container-fluid">
+        <div class="container-fluid jumbotron">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <h3>
@@ -125,6 +133,11 @@
         </div>
         <form id="HtmlForm" runat="server">
             <div ng-controller="MainCtrl">
+                <div class="row">
+                    <div class="col-md-12 well">
+                        <h2>Coding Challenge</h2>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-4">
 
@@ -187,26 +200,33 @@
         <br/>
         <div>
             <h3>
-                Parte 1
+                Parte 1 - Coding Challenge
             </h3>
             <ul>
                 <li>Para el desarrollo de la prueba se utilizaron los lenguajes HTML y javascript</li>
                 <li>Se utilizó el framework <a href="https://angularjs.org/" target="_blank">angularjs</a> para estructurar el código </li>
+                <li>Se utilizó el framework <a href="http://getbootstrap.com">Bootstrap</a> para maquetar y dar estilo a la capa de presentación</li>
+                <li>Se utilizó <a href="https://github.com/sriox/rappitest">Github</a> para el versionamiento de código</li>
                 <li>Se construyó una capa de presentación (HTML) y una capa de lógica (Javascript) para estructurar el código</li>
                 <li>No se usaron capas de servicios ni persistencia porque la prueba no lo requería</li>
-                <li>El código de la lógica contiene atributos y métodos (funciones) que representan los objetos y su interacción</li>
-                <li></li>
-                <li></li>
+                <li>El código de la lógica contiene atributos y métodos (funciones) que representan los objetos y su interacción</li>                
             </ul>
         </div>
         <div>
             <h3>
-                Parte 2
+                Parte 2 - Code Refactoring
             </h3>
+            <ul>
+                <li>El controlador tiene muchas responsabilidades, valida campos, recupera entidades, actualiza información, etc. Estas deberían ser separadas en métodos bien definidos para cumplir con el principio de responsabilidad única</li>
+                <li>Se debería usar route binding y request validations para entregar el objeto service con sus respectivas validaciones de datos</li>
+                <li>Los errores deberían manejarse por medio de $this->responseBadRequest(...) y dentro sí el código de error</li>
+                <li>El código debe estar autodocumentado para promover la mantenibilidad del código</li>
+                <li>Se deben limpiar los comentarios innecesarios para tener un códio limpio</li>
+            </ul>
         </div>
         <div>
             <h3>
-                Parte 3
+                Parte 3 - Preguntas
             </h3>
             <ol>
                 <li>Principio de responsabilidad única: Consiste en que una clase solo debe realizar una única cosa, sin mezclar operaciones de diferentes clases u objetos de negocio y esto tiene como finalidad promover la reutilización, bajo acoplamiento y la mantenibilidad</li>
